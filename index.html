@@ -3,59 +3,150 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RS ENTERPRISES Print Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RS ENTERPRISES Portal</title>
 <style>
-body{margin:0;background:#f1f5f9;font-family:Arial}
-header{background:#102a43;color:white;padding:25px;text-align:center}
-main{max-width:850px;margin:30px auto;padding:15px}
-.card{background:white;padding:25px;margin:15px 0;border-radius:12px;box-shadow:0 3px 12px #ddd}
-h2{color:#1769aa}
-input,select,textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:7px;box-sizing:border-box}
-button{background:#1769aa;color:white;border:0;padding:12px 20px;border-radius:7px;cursor:pointer}
-.balance{font-size:28px;color:green;font-weight:bold}
-footer{text-align:center;padding:20px;color:#777}
+*{box-sizing:border-box}
+body{margin:0;background:#f2f5fa;color:#172b4d;font-family:Arial,sans-serif}
+header{background:#102a43;color:white;padding:20px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
+.logo{font-size:25px;font-weight:bold;letter-spacing:1px}
+header small{color:#c5d7e8}
+button{border:0;border-radius:9px;padding:12px 18px;background:#1769aa;color:white;cursor:pointer;font-weight:bold}
+.wrap{max-width:1100px;margin:auto;padding:22px 16px}
+.welcome{background:linear-gradient(120deg,#102a43,#1769aa);color:white;padding:28px;border-radius:16px;margin-bottom:20px}
+.welcome h1{margin:0 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.card{background:white;padding:20px;border-radius:14px;box-shadow:0 3px 15px #102a4310}
+.wallet{background:#e8f2ff;border:1px solid #c9dff7}
+.amount{font-size:30px;font-weight:bold;color:#1769aa;margin:12px 0}
+h2{font-size:19px;margin-top:0}
+.service{font-size:32px;margin-bottom:10px}
+label{display:block;margin:12px 0 6px;font-weight:bold}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d4dce7;border-radius:8px;font-size:15px}
+.section{margin-top:25px}
+footer{text-align:center;background:#102a43;color:white;padding:24px;margin-top:30px}
+.menu{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}
+.menu button{background:white;color:#1769aa;border:1px solid #dce5ef}
+.menu button:hover{background:#1769aa;color:white}
+.note{font-size:12px;color:#687b90;line-height:1.5}
 </style>
 </head>
 <body>
 <header>
-<h1>RS ENTERPRISES</h1>
-<p>FREE PRINT PORTAL</p>
+<div><div class="logo">RS ENTERPRISES</div>
+<small>PRINT & DIGITAL SERVICE PORTAL</small></div>
+<button onclick="document.getElementById('login').scrollIntoView()">Customer Login</button>
 </header>
-<main>
-<div class="card">
-<h2>Welcome Customer</h2>
-<p>RS ENTERPRISES Online Print Service Portal</p>
+<div class="wrap">
+<div class="welcome">
+<h1>Welcome to RS ENTERPRISES</h1>
+<p>Your Digital Service & Print Portal</p>
+<p>Fast • Simple • Reliable</p>
+</div>
+
+<div class="menu">
+<button onclick="home()">Home</button>
+<button onclick="go('services')">Services</button>
+<button onclick="go('wallet')">My Wallet</button>
+<button onclick="go('request')">Print Request</button>
+<button onclick="go('login')">Login</button>
+</div>
+
+<div class="grid">
+<div class="card wallet" id="wallet">
+<h2>💳 My Wallet</h2>
+<div class="amount">₹0.00</div>
+<p>Available Balance</p>
+<button onclick="alert('Wallet payment system abhi connect nahi hai.')">Add Money</button>
 </div>
 <div class="card">
+<h2>👤 Customer Account</h2>
+<p>Login to access your services.</p>
+<button onclick="go('login')">Login Now</button>
+</div>
+<div class="card">
+<h2>🖨️ Print Services</h2>
+<p>Print, photocopy and scanning inquiries.</p>
+<button onclick="go('request')">Request Now</button>
+</div>
+</div>
+
+<div class="section" id="services">
+<h2>Our Services</h2>
+<div class="grid">
+<div class="card"><div class="service">🖨️</div><h2>Black & White Print</h2><p>Document printing service</p></div>
+<div class="card"><div class="service">🎨</div><h2>Colour Print</h2><p>Colour document printing</p></div>
+<div class="card"><div class="service">📄</div><h2>Photocopy</h2><p>Document photocopy service</p></div>
+<div class="card"><div class="service">📑</div><h2>Scanning</h2><p>Document scanning service</p></div>
+<div class="card"><div class="service">🪪</div><h2>PVC Card</h2><p>Card printing inquiry</p></div>
+<div class="card"><div class="service">📋</div><h2>Other Services</h2><p>Contact us for assistance</p></div>
+</div>
+</div>
+
+<div class="section card" id="login">
 <h2>Customer Login</h2>
-<input type="tel" placeholder="Mobile Number" maxlength="10">
-<button onclick="alert('Real OTP service abhi connect nahi hai')">Login / Get OTP</button>
+<label>Mobile Number</label>
+<input id="mobile" type="tel" maxlength="10" placeholder="Enter 10 digit mobile number">
+<button style="margin-top:12px" onclick="login()">Get OTP</button>
+<p id="loginmsg" class="note">Demo only: Real SMS OTP is not connected.</p>
 </div>
-<div class="card">
-<h2>My Wallet Balance</h2>
-<div class="balance">₹0.00</div>
-<p>Wallet balance preview</p>
-</div>
-<div class="card">
-<h2>Print Service Inquiry</h2>
-<input placeholder="Customer Name">
-<input placeholder="Mobile Number">
-<select>
+
+<div class="section card" id="request">
+<h2>Print Request Inquiry</h2>
+<label>Customer Name</label>
+<input id="name" placeholder="Enter your name">
+<label>Mobile Number</label>
+<input id="phone" maxlength="10" placeholder="Enter mobile number">
+<label>Select Service</label>
+<select id="service">
 <option>Black & White Print</option>
 <option>Colour Print</option>
 <option>Photocopy</option>
 <option>Scanning</option>
+<option>PVC Card Inquiry</option>
 </select>
-<textarea placeholder="Your message"></textarea>
-<button onclick="alert('Demo only. Server connection pending.')">Submit Inquiry</button>
+<label>Quantity</label>
+<input id="qty" type="number" min="1" value="1">
+<label>Message</label>
+<textarea id="message" placeholder="Write your requirements"></textarea>
+<button style="margin-top:15px" onclick="sendRequest()">Submit Inquiry</button>
+<p id="result" class="note"></p>
 </div>
-<div class="card">
-<h2>Contact Us</h2>
-<p>RS ENTERPRISES</p>
+
+<div class="section card">
+<h2>📞 Contact Us</h2>
+<p><b>RS ENTERPRISES</b></p>
 <p>Mobile: 8551962469</p>
+<button onclick="window.open('https://wa.me/918551962469','_blank')">WhatsApp Us</button>
 </div>
-</main>
-<footer>© 2026 RS ENTERPRISES</footer>
+</div>
+<footer>
+<h3>RS ENTERPRISES</h3>
+<p>Digital Services & Print Portal</p>
+<small>© 2026 RS ENTERPRISES. All Rights Reserved.</small>
+</footer>
+<script>
+function go(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+function home(){window.scrollTo({top:0,behavior:'smooth'});}
+function login(){
+let m=document.getElementById('mobile').value;
+document.getElementById('loginmsg').innerText=
+/^[6-9][0-9]{9}$/.test(m)?
+'Demo: Mobile number valid hai. Real OTP backend connect karna baaki hai.':
+'Sahi 10 digit mobile number daalein.';
+}
+function sendRequest(){
+let n=document.getElementById('name').value.trim();
+let p=document.getElementById('phone').value.trim();
+let r=document.getElementById('result');
+if(!n||!/^[6-9][0-9]{9}$/.test(p)){
+r.innerText='Naam aur sahi mobile number bharein.';
+return;
+}
+r.innerText='Demo form checked. Live server connection ke bina request save nahi hui.';
+}
+</script>
 </body>
 </html>
