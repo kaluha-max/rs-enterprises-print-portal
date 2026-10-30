@@ -1,151 +1,125 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RS ENTERPRISES Portal</title>
+<title>RS ENTERPRISES | Online Services</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#f2f5fa;color:#172b4d;font-family:Arial,sans-serif}
-header{background:#102a43;color:white;padding:20px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px}
-.logo{font-size:25px;font-weight:bold;letter-spacing:1px}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f6fb;color:#172b4d}
+header{background:#102a43;color:white;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-size:24px;font-weight:bold}
 header small{color:#c5d7e8}
-button{border:0;border-radius:9px;padding:12px 18px;background:#1769aa;color:white;cursor:pointer;font-weight:bold}
-.wrap{max-width:1100px;margin:auto;padding:22px 16px}
-.welcome{background:linear-gradient(120deg,#102a43,#1769aa);color:white;padding:28px;border-radius:16px;margin-bottom:20px}
-.welcome h1{margin:0 0 10px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
-.card{background:white;padding:20px;border-radius:14px;box-shadow:0 3px 15px #102a4310}
-.wallet{background:#e8f2ff;border:1px solid #c9dff7}
-.amount{font-size:30px;font-weight:bold;color:#1769aa;margin:12px 0}
-h2{font-size:19px;margin-top:0}
-.service{font-size:32px;margin-bottom:10px}
-label{display:block;margin:12px 0 6px;font-weight:bold}
-input,select,textarea{width:100%;padding:12px;border:1px solid #d4dce7;border-radius:8px;font-size:15px}
-.section{margin-top:25px}
-footer{text-align:center;background:#102a43;color:white;padding:24px;margin-top:30px}
-.menu{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}
-.menu button{background:white;color:#1769aa;border:1px solid #dce5ef}
-.menu button:hover{background:#1769aa;color:white}
-.note{font-size:12px;color:#687b90;line-height:1.5}
+button{border:0;border-radius:8px;padding:12px 16px;background:#0878c9;color:white;font-weight:bold;cursor:pointer}
+button:hover{opacity:.88}
+.wrap{max-width:1150px;margin:auto;padding:22px 16px}
+.hero{background:linear-gradient(120deg,#102a43,#0878c9);color:white;padding:30px;border-radius:16px;margin-bottom:22px}
+.hero h1{margin-top:0}
+.search{width:100%;padding:14px;border:1px solid #ccd5e0;border-radius:9px;margin:10px 0 20px;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{background:white;padding:19px;border-radius:13px;box-shadow:0 3px 15px #102a4310}
+.card h3{margin-top:0;color:#075b9c}
+.card p{color:#52647a;line-height:1.5}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.section-title{margin:25px 0 12px}
+.panel{display:none;background:white;padding:22px;border-radius:13px;margin:20px 0;box-shadow:0 3px 15px #102a4310}
+.panel input{width:100%;padding:13px;margin:8px 0 14px;border:1px solid #ccd5e0;border-radius:8px}
+.notice{background:#fff4d6;padding:13px;border-radius:8px;color:#704d00;line-height:1.5}
+footer{background:#102a43;color:white;text-align:center;padding:24px;margin-top:35px}
+a{color:#0878c9}
 </style>
 </head>
 <body>
+
 <header>
-<div><div class="logo">RS ENTERPRISES</div>
-<small>PRINT & DIGITAL SERVICE PORTAL</small></div>
-<button onclick="document.getElementById('login').scrollIntoView()">Customer Login</button>
+ <div>
+  <div class="logo">RS ENTERPRISES</div>
+  <small>आपकी सभी ऑनलाइन सेवाएँ एक ही जगह</small>
+ </div>
+ <div class="actions">
+  <button onclick="showPanel('customer')">Customer Login</button>
+  <button onclick="showPanel('admin')">Admin Login</button>
+ </div>
 </header>
-<div class="wrap">
-<div class="welcome">
-<h1>Welcome to RS ENTERPRISES</h1>
-<p>Your Digital Service & Print Portal</p>
-<p>Fast • Simple • Reliable</p>
-</div>
 
-<div class="menu">
-<button onclick="home()">Home</button>
-<button onclick="go('services')">Services</button>
-<button onclick="go('wallet')">My Wallet</button>
-<button onclick="go('request')">Print Request</button>
-<button onclick="go('login')">Login</button>
-</div>
+<main class="wrap">
+ <section class="hero">
+  <h1>Welcome to RS ENTERPRISES</h1>
+  <p>RTO • Insurance • Aadhaar • PAN • Online Forms • Printing</p>
+  <p>पूरे बिहार में ऑनलाइन सेवाओं के लिए संपर्क करें।</p>
+  <button onclick="contactUs()">WhatsApp पर संपर्क करें</button>
+ </section>
 
-<div class="grid">
-<div class="card wallet" id="wallet">
-<h2>💳 My Wallet</h2>
-<div class="amount">₹0.00</div>
-<p>Available Balance</p>
-<button onclick="alert('Wallet payment system abhi connect nahi hai.')">Add Money</button>
-</div>
-<div class="card">
-<h2>👤 Customer Account</h2>
-<p>Login to access your services.</p>
-<button onclick="go('login')">Login Now</button>
-</div>
-<div class="card">
-<h2>🖨️ Print Services</h2>
-<p>Print, photocopy and scanning inquiries.</p>
-<button onclick="go('request')">Request Now</button>
-</div>
-</div>
+ <div id="customer" class="panel">
+  <h2>Customer Login</h2>
+  <div class="notice">Customer OTP Login अभी शुरू नहीं हुआ है। इसे चालू करने के लिए सुरक्षित backend और OTP सेवा जोड़नी होगी।</div>
+  <button onclick="hidePanels()">बंद करें</button>
+ </div>
 
-<div class="section" id="services">
-<h2>Our Services</h2>
-<div class="grid">
-<div class="card"><div class="service">🖨️</div><h2>Black & White Print</h2><p>Document printing service</p></div>
-<div class="card"><div class="service">🎨</div><h2>Colour Print</h2><p>Colour document printing</p></div>
-<div class="card"><div class="service">📄</div><h2>Photocopy</h2><p>Document photocopy service</p></div>
-<div class="card"><div class="service">📑</div><h2>Scanning</h2><p>Document scanning service</p></div>
-<div class="card"><div class="service">🪪</div><h2>PVC Card</h2><p>Card printing inquiry</p></div>
-<div class="card"><div class="service">📋</div><h2>Other Services</h2><p>Contact us for assistance</p></div>
-</div>
-</div>
+ <div id="admin" class="panel">
+  <h2>Admin Login</h2>
+  <div class="notice">Admin ID: RSADMIN तय की गई है। असली सुरक्षित Login अभी backend बनने के बाद ही चालू होगा। यहाँ पासवर्ड डालकर अभी Login नहीं होगा।</div>
+  <button onclick="hidePanels()">बंद करें</button>
+ </div>
 
-<div class="section card" id="login">
-<h2>Customer Login</h2>
-<label>Mobile Number</label>
-<input id="mobile" type="tel" maxlength="10" placeholder="Enter 10 digit mobile number">
-<button style="margin-top:12px" onclick="login()">Get OTP</button>
-<p id="loginmsg" class="note">Demo only: Real SMS OTP is not connected.</p>
-</div>
+ <h2 class="section-title">हमारी Services</h2>
+ <input class="search" id="search" placeholder="अपनी सर्विस खोजें..." oninput="filterServices()">
 
-<div class="section card" id="request">
-<h2>Print Request Inquiry</h2>
-<label>Customer Name</label>
-<input id="name" placeholder="Enter your name">
-<label>Mobile Number</label>
-<input id="phone" maxlength="10" placeholder="Enter mobile number">
-<label>Select Service</label>
-<select id="service">
-<option>Black & White Print</option>
-<option>Colour Print</option>
-<option>Photocopy</option>
-<option>Scanning</option>
-<option>PVC Card Inquiry</option>
-</select>
-<label>Quantity</label>
-<input id="qty" type="number" min="1" value="1">
-<label>Message</label>
-<textarea id="message" placeholder="Write your requirements"></textarea>
-<button style="margin-top:15px" onclick="sendRequest()">Submit Inquiry</button>
-<p id="result" class="note"></p>
-</div>
+ <div class="grid" id="services">
+  <div class="card"><h3>🚘 RTO & Vehicle Services</h3><p>RC, DL, LL, Duplicate RC/DL, Ownership Transfer, Address Change, Challan, Fitness, Permit, HSRP.</p><button onclick="enquire('RTO Services')">जानकारी लें</button></div>
+  <div class="card"><h3>🛡️ Motor Insurance</h3><p>Bike, Car, Auto, Pickup, Truck और Commercial Vehicle Insurance.</p><button onclick="enquire('Motor Insurance')">जानकारी लें</button></div>
+  <div class="card"><h3>🪪 Aadhaar Services</h3><p>Aadhaar Download सहायता, PVC Order जानकारी, Update प्रक्रिया की जानकारी.</p><button onclick="enquire('Aadhaar Services')">जानकारी लें</button></div>
+  <div class="card"><h3>🆔 PAN Card Services</h3><p>New PAN, PAN Correction, e-PAN Download और PAN Status सहायता.</p><button onclick="enquire('PAN Card')">जानकारी लें</button></div>
+  <div class="card"><h3>🗳️ Voter Services</h3><p>Voter ID Download, Correction और New Registration सहायता.</p><button onclick="enquire('Voter Services')">जानकारी लें</button></div>
+  <div class="card"><h3>📄 Government Services</h3><p>Income, Caste, Residence, EWS Certificate और अन्य सरकारी आवेदन सहायता.</p><button onclick="enquire('Government Services')">जानकारी लें</button></div>
+  <div class="card"><h3>🏢 Business Services</h3><p>GST, Udyam/MSME, FSSAI और ITR आवेदन सहायता.</p><button onclick="enquire('Business Services')">जानकारी लें</button></div>
+  <div class="card"><h3>🎓 Education & Jobs</h3><p>Exam Form, Job Application और Scholarship Form सहायता.</p><button onclick="enquire('Education and Jobs')">जानकारी लें</button></div>
+  <div class="card"><h3>🖨️ Print Portal</h3><p>Black & White Print, Colour Print, PDF Print, Scan और PVC Card.</p><button onclick="enquire('Print Services')">जानकारी लें</button></div>
+  <div class="card"><h3>💰 My Wallet</h3><p>Wallet Recharge और Balance सुविधा का डिज़ाइन। वास्तविक Wallet अभी सक्रिय नहीं है।</p><button onclick="showPanel('wallet')">Wallet खोलें</button></div>
+ </div>
 
-<div class="section card">
-<h2>📞 Contact Us</h2>
-<p><b>RS ENTERPRISES</b></p>
-<p>Mobile: 8551962469</p>
-<button onclick="window.open('https://wa.me/918551962469','_blank')">WhatsApp Us</button>
-</div>
-</div>
+ <div id="wallet" class="panel">
+  <h2>My Wallet</h2>
+  <div class="notice">Wallet Recharge अभी सक्रिय नहीं है। UPI Payment, UTR Verification और Admin Approval के लिए सुरक्षित backend जोड़ना बाकी है। अभी कोई भुगतान न करें।</div>
+  <button onclick="hidePanels()">बंद करें</button>
+ </div>
+
+ <h2 class="section-title">हमसे संपर्क करें</h2>
+ <div class="card">
+  <h3>RS ENTERPRISES</h3>
+  <p>फोन / WhatsApp: 8551962469</p>
+  <p>सेवा क्षेत्र: बिहार</p>
+  <button onclick="contactUs()">WhatsApp करें</button>
+ </div>
+</main>
+
 <footer>
-<h3>RS ENTERPRISES</h3>
-<p>Digital Services & Print Portal</p>
-<small>© 2026 RS ENTERPRISES. All Rights Reserved.</small>
+ <b>RS ENTERPRISES</b>
+ <p>Online Services | RTO | Insurance | Printing</p>
+ <small>यह एक निजी सेवा सहायता पोर्टल है, सरकारी वेबसाइट नहीं।</small>
 </footer>
+
 <script>
-function go(id){
-document.getElementById(id).scrollIntoView({behavior:'smooth'});
+function showPanel(id){
+ hidePanels();
+ document.getElementById(id).style.display='block';
+ document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
-function home(){window.scrollTo({top:0,behavior:'smooth'});}
-function login(){
-let m=document.getElementById('mobile').value;
-document.getElementById('loginmsg').innerText=
-/^[6-9][0-9]{9}$/.test(m)?
-'Demo: Mobile number valid hai. Real OTP backend connect karna baaki hai.':
-'Sahi 10 digit mobile number daalein.';
+function hidePanels(){
+ document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
 }
-function sendRequest(){
-let n=document.getElementById('name').value.trim();
-let p=document.getElementById('phone').value.trim();
-let r=document.getElementById('result');
-if(!n||!/^[6-9][0-9]{9}$/.test(p)){
-r.innerText='Naam aur sahi mobile number bharein.';
-return;
+function contactUs(){
+ window.open('https://wa.me/918551962469','_blank');
 }
-r.innerText='Demo form checked. Live server connection ke bina request save nahi hui.';
+function enquire(service){
+ window.open('https://wa.me/918551962469?text='+encodeURIComponent('Namaste, mujhe '+service+' ke baare mein jankari chahiye.'),'_blank');
+}
+function filterServices(){
+ let q=document.getElementById('search').value.toLowerCase();
+ document.querySelectorAll('#services .card').forEach(card=>{
+  card.style.display=card.innerText.toLowerCase().includes(q)?'block':'none';
+ });
 }
 </script>
 </body>
